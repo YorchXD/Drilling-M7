@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Lista de Laboratorios <a href="{% url 'crear_laboratorio' %}" class="btn btn-primary">Crear</a></h1>
+    <hr>
+
+    <div class="tabla-datos mt-5">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Ciudad</th>
+                    <th scope="col">Pais</th>
+                    <th scope="col" class="text-center">Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for laboratorio in laboratorios %}
+                    <tr>
+                        <td>{{laboratorio.nombre}}</td>
+                        <td>{{laboratorio.ciudad}}</td>
+                        <td>{{laboratorio.pais}}</td>
+                        <td>
+                            <div class="form-group row justify-content-center">
+                                <div class="col-auto">
+                                    <form action="{% url 'editar_laboratorio' laboratorio.id %}" method="get">
+                                        {% csrf_token %}
+                                        <button class="btn btn-primary" type="submit" values="" name="laboratorio_id">Editar</button>
+                                    </form>
+                                </div>
+                                <div class="col-auto">
+                                    <form action="{% url 'eliminar_laboratorio' laboratorio.id %}" method="get">
+                                        {% csrf_token %}
+                                        <button class="btn btn-danger" type="submit" values="" name="laboratorio_id">Eliminar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Crear Laboratorio</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="form-group row justify-content-end">
+        <div class="col-auto">
+            <a href="{% url 'laboratorios' %}" class="btn btn-secondary btn-block">Cancelar</a>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

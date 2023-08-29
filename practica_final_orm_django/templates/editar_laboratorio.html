@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Editar Laboratorio</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="form-group row justify-content-end">
+        <div class="col-auto">
+            <a href="{% url 'laboratorios' %}" class="btn btn-secondary btn-block">Cancelar</a>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </div>
+    </div>
+
+
+    <!-- <button type="submit" class="btn btn-primary">Guardar Cambios</button> -->
+</form>
+<!-- <a href="{% url 'laboratorios' %}" class="btn btn-secondary">Cancelar</a> -->
+{% endblock %}
